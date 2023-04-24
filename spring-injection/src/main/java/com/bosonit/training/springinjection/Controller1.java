@@ -1,6 +1,7 @@
 package com.bosonit.training.springinjection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,10 +15,10 @@ public class Controller1 {
 
     @Autowired
     Component3 component3;
-    public Controller1(Component1 component1, Component2 component2){
+    public Controller1(@Qualifier("component1Bean") Component1 component1, Component2 component2){
         this.component1 = component1;
         this.component2 = component2;
-        System.out.println("Initializing from Controller1");
+        System.out.println("Initializing from Controller1. Name: " + component1.name);
     }
     @GetMapping("/")
     public String hello(){
