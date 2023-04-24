@@ -11,6 +11,9 @@ public class Controller1 {
     @Autowired
     Component1 component1;
     Component2 component2;
+
+    @Autowired
+    Component3 component3;
     public Controller1(Component1 component1, Component2 component2){
         this.component1 = component1;
         this.component2 = component2;
@@ -20,5 +23,10 @@ public class Controller1 {
     public String hello(){
         var component2 = new Component2();
         return "Hello from controller "+ component1.hello();
+    }
+    @GetMapping("/3")
+    public String bye(){
+
+        return "Hello from controller "+ component3.bye();
     }
 }
