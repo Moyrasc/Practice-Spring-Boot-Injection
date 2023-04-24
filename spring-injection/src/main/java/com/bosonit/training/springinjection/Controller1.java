@@ -10,15 +10,15 @@ public class Controller1 {
     //SpringBoot al arrancar escanea las clases, si encuentra
     // un @component lo mete en un contexto, de forma que cualquier otra clase con Autowired y que haya inicializado el propio Spring podremos usarlo
     @Autowired
-    Component1 component1;
+    ComponentInterface component1;
     Component2 component2;
 
     @Autowired
     Component3 component3;
-    public Controller1(@Qualifier("component1Bean") Component1 component1, Component2 component2){
+    public Controller1(@Qualifier("component1Bean") ComponentInterface component1, Component2 component2){
         this.component1 = component1;
         this.component2 = component2;
-        System.out.println("Initializing from Controller1. Name: " + component1.name);
+        System.out.println("Initializing from Controller1. Name: " + component1.getName());
     }
     @GetMapping("/")
     public String hello(){
